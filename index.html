@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="google-site-verification" content="nX_GxGUdWOEFV5zRMKnNKeu0bUEMf2og8zjTLmBZ4Zo" />
+        <title>MumbleTree</title>
+        <link rel="stylesheet" type="text/css" href="MumbleTree.css" />
+        <script type="text/javascript" src="MumbleTree.js"></script>
+        <style type="text/css">
+            body {
+                font-family: Helvetica, sans-serif;
+                font-size: 12px;
+            }
+            h1, h2 {
+                background: #ddd;
+            }
+            .mumbleTree {
+                padding: 1em;
+                border: 1px dotted grey;
+                background: #ffe;
+                float: left;
+            }
+            .clearer {
+                clear: both;
+            }
+        </style>
+    </head>
+<body>
+    <h1>MumbleTree</h1>
+
+    <p>
+        <a href="http://gambler.orchitech.cz/MumbleTree.js">MumbleTree.js</a> is a combination
+        of JavaScript widget and PHP JSONP generator for easy inclusion of Mumble channel and user
+        tree into a website.
+    </p>
+
+
+    <h2>About</h2>
+
+    <p>
+        MumbleTree was created for my own clan web site. It was supposed to be
+        an easy and quick solution how to include a user and channel tree into the website
+        in a special situations when Ice libraries are not available to the website.<br />
+        As I feel someone can benefit from my work I've also started the
+        <a href="https://sourceforge.net/apps/phpbb/mumble/viewtopic.php?f=7&amp;t=41&amp;start=0">
+        thread on the official Mumble forum</a>.
+    </p>
+
+    <p>
+        MumbleTree is mainly a JavaScript widget that is capable of fetching
+        channels and users information via
+        <a href="http://en.wikipedia.org/wiki/JSONP#JSONP">JSONP</a> and avoiding
+        so called <a href="http://en.wikipedia.org/wiki/Same_origin_policy">
+        same-origin policy</a>.
+        Next to the widget itself is a JSON generator, which is a script in PHP.
+        This script acts as a beck-end to the JavaScript widget.
+        Both the widget and the generator script are as simple as possible without
+        any unnecessary dependency.
+    </p>
+
+    <p>
+        <img src="diagram.png" alt="MumbleTree communication diagram." />
+    </p>
+
+
+    <h2>License</h2>
+
+    <p>
+        <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+        <img alt="Licence Creative Commons" style="border-width:0"
+        src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+        Do whatever you want :).
+        I would appretiate any feedback (use Mumble forum
+        <a href="https://sourceforge.net/apps/phpbb/mumble/viewtopic.php?f=7&amp;t=41&amp;start=0">thread</a>).
+    </p>
+
+
+    <h2>Download</h2>
+
+    <dl>
+        <dt>MumbleTree JavaScript widget</dt>
+        <dd><a href="MumbleTree.js">MumbleTree.js</a></dd>
+        <dt>JSONP PHP generator</dt>
+        <dd>
+            For ZeroC Ice 3.4.1 or newer use <a href="generate-json2.txt">generate-json2.txt</a>.<br />
+            For ZeroC Ice older than 3.4.1 use <a href="generate-json.txt">generate-json.txt</a>.
+        </dd>
+        <dt>MumbleTree CSS</dt>
+        <dd>
+            If you want to use default styles you have to download files
+            <a href="MumbleTree.css">MumbleTree.css</a>,
+            <a href="mumble-channel.png">mumble-channel.png</a>,
+            <a href="mumble-user.png">mumble-user.png</a>.
+        </dd>
+    </dl>
+
+
+    <h2>Installation</h2>
+
+    <p>
+        Insert into the page MumbleTree JS:
+    </p>
+<pre>
+    &lt;script type="text/javascript" src="http://your.website.com/MumbleTree.js"&gt;&lt;/script&gt;
+</pre>
+    <p>
+        and to the place where the tree is supposed to be rendered write:
+    </p>
+<pre>
+    &lt;script type="text/javascript"&gt;
+        var mumbleTree = new MumbleTree({
+            url: "http://your.jsonp-generator.com"
+        });
+    &lt;/script&gt;
+</pre>
+
+    <p>
+        Installing PHP generator requires a little bit of HTTP server and PHP
+        configuration knowledge. If you are not able to install the environment
+        by yourself, you can contact me via Mumble forum
+        <a href="https://sourceforge.net/apps/phpbb/mumble/viewtopic.php?f=7&amp;t=41&amp;start=0">thread</a>.
+    </p>
+
+    <h2>Styling</h2>
+
+    <p>
+        For default styling insert default stylesheet:
+    </p>
+<pre>
+    &lt;link rel="stylesheet" type="text/css" src="http://your.website.com/MumbleTree.css" /&gt;
+</pre>
+
+
+    <h2>Example</h2>
+
+    <p>Check the source code of this page as well.</p>
+
+    <script type="text/javascript">
+        var mumbleTree = new MumbleTree({
+            url: "http://gambler.orchitech.cz/mumble-server/channel-data.php"
+        });
+    </script>
+
+    <div class="clearer"></div>
+
+</body>
+</html>
+
